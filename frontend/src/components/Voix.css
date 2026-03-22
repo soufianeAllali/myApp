@@ -1,0 +1,381 @@
+/* Premium Voix CSS */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+.voix-container {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255,255,255,0.5);
+  font-family: 'Outfit', sans-serif;
+  color: #1e293b;
+  position: relative;
+  overflow: hidden;
+}
+
+.voix-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.voix-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.voix-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.voix-header p {
+  color: #64748b;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.voix-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.btn-mode {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-family: 'Outfit';
+  font-weight: 600;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.btn-mode:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+}
+
+.btn-mode.active {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.05);
+  color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.voix-helper {
+  background: linear-gradient(to right, rgba(239, 246, 255, 0.8), rgba(255, 255, 255, 0.5));
+  border-left: 4px solid #3b82f6;
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.05);
+  animation: slideFadeIn 0.5s ease-out;
+}
+
+.voix-helper h4 {
+  margin: 0 0 12px 0;
+  color: #1e293b;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.voix-helper p {
+  margin: 0;
+  color: #334155;
+  font-family: 'Consolas', monospace;
+  font-size: 14px;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e1;
+  word-break: break-all;
+}
+
+.voix-recording-section {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px dashed #cbd5e1;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.voix-recording-section.is-recording {
+  border-color: #ef4444;
+  background: rgba(254, 242, 242, 0.6);
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.1);
+}
+
+.btn-record {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  font-size: 18px;
+  font-family: 'Outfit';
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-record::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: inherit;
+  filter: brightness(1.1);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s;
+}
+
+.btn-record:hover::after {
+  opacity: 1;
+}
+
+.btn-record:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-record.start {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
+.btn-record.stop {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+  animation: recordPulse 2s infinite;
+}
+
+@keyframes recordPulse {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+  70% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.speech-output {
+  margin-top: 30px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  min-height: 80px;
+  color: #334155;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.speech-output .empty-text {
+  color: #94a3b8;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.voix-form-section {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  animation: slideFadeUp 0.6s ease-out;
+}
+
+.voix-form-section h3 {
+  margin: 0 0 24px 0;
+  color: #0f172a;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.voix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.voix-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.voix-input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.voix-input-group input, 
+.voix-input-group select {
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: 'Outfit';
+  color: #1e293b;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.voix-input-group select[multiple] {
+  height: 120px;
+  background: #ffffff;
+}
+
+.voix-input-group input:focus,
+.voix-input-group select:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.voix-submit {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 24px;
+}
+
+.btn-submit {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Outfit';
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.4);
+}
+
+.btn-submit:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.ai-status {
+  text-align: center;
+  color: #6366f1;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-spinner-container {
+  width: 50px;
+  height: 50px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-spinner-container i {
+  font-size: 24px;
+}
+
+/* Animations */
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.system-message-box {
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  color: #166534;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: slideFadeUp 0.3s ease;
+  box-shadow: 0 4px 12px rgba(22, 101, 52, 0.05);
+}
+
+.system-message-box.error {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.system-message-box.info {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}

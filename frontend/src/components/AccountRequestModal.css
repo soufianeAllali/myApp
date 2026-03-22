@@ -1,0 +1,250 @@
+.arm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  padding: 20px;
+}
+
+.arm-modal {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 24px;
+  padding: 35px 40px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.arm-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f1f5f9;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arm-close:hover {
+  background: #ffe4e6;
+  color: #f43f5e;
+  transform: rotate(90deg);
+}
+
+.arm-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.arm-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.arm-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.arm-header p {
+  color: #64748b;
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.arm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.arm-input-group {
+  margin-bottom: 20px;
+}
+
+.arm-input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.arm-input-wrapper {
+  position: relative;
+}
+
+.arm-input-wrapper i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.arm-input-wrapper input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #1e293b;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.arm-input-wrapper input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.arm-error {
+  color: #f43f5e;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 6px;
+  display: block;
+}
+
+.arm-extra-section {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 16px;
+  margin: 24px 0;
+}
+
+.arm-extra-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.arm-extra-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #475569;
+  margin: 0;
+}
+
+.arm-add-btn {
+  background: white;
+  color: #6366f1;
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arm-add-btn:hover {
+  background: #6366f1;
+  color: white;
+  border-color: #6366f1;
+}
+
+.arm-extra-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 40px;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.arm-extra-row input {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.arm-extra-row button {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.arm-submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+}
+
+.arm-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4);
+}
+
+.arm-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.arm-success-msg {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.arm-tick {
+  font-size: 64px;
+  color: #10b981;
+  background: #ecfdf5;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 24px;
+}
+
+.animate-in {
+  animation: modalSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-pop {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalSlide {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 640px) {
+  .arm-grid { grid-template-columns: 1fr; }
+  .arm-modal { padding: 30px 20px; }
+}
